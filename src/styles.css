@@ -88,12 +88,12 @@ input {
   margin-bottom: 30px;
   justify-items: center;
   gap: 1rem;
+  width: 400px;
 }
 
 .city-input {
   border-radius: 0.25rem;
-  width: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .city-input:active,
@@ -127,15 +127,12 @@ input {
 }
 
 .search-button:hover,
-.search-button:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  background-color: #dfdad3;
-}
-
+.search-button:focus,
 .search-button:active {
-  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.02);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   background-color: #ecca90;
+  color: rgb(83, 79, 79);
 }
 
 /* Forecast */
