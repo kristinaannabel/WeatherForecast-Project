@@ -9,6 +9,11 @@ body {
   padding: 0 20px;
 }
 
+footer {
+  text-align: center;
+  font-size: 15px;
+}
+
 .wrapper {
   max-width: 450px;
   margin: 150px auto;
@@ -83,3 +88,4 @@ body {
   border: none;
   background-color: transparent;
 }
+
