@@ -1,5 +1,4 @@
 // Current Time
-
 const now = new Date();
 let hour = now.getHours();
 let minutes = now.getMinutes();
@@ -25,7 +24,7 @@ if (minutes < 10) {
   minutes = "0" + minutes;
 }
 
-document.getElementById("timeDate").innerHTML = `${day} @ ${hour}:${minutes}`;
+document.getElementById("timeDay").innerHTML = `${day} @ ${hour}:${minutes}`;
 
 /* In your project, when a user searches for a city 
 (example: New York), it should display the name of the city on 
@@ -35,15 +34,15 @@ function tempCity(response) {
   let temp = Math.round(response.data.main.temp);
   let tempElement = document.getElementById("temperature");
   tempElement.innerHTML = `${temp}°C`;
-  let cityElement = document.getElementById("city");
+  let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.name;
 }
 
 function searchCity(event) {
   console.log("triggered");
   event.preventDefault();
-  let cityElement = document.getElementById("city");
-  let cityInput = document.getElementById("searchInput");
+  let cityElement = document.querySelector("h1");
+  let cityInput = document.querySelector("input");
   cityElement.innerHTML = cityInput.value;
   let units = "metric";
   let apiKey = "96e1b7384a3ea207c6c443d025e59895";
@@ -85,3 +84,5 @@ function showLocation(event) {
 
 let button = document.querySelector("#locationButton");
 button.addEventListener("click", getUserLocation);
+
+window.onload = getUserLocation;
