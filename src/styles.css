@@ -78,3 +78,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
+
+.icon {
+  border: none;
+  background-color: transparent;
+}

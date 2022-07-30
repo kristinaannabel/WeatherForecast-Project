@@ -26,10 +26,8 @@ if (minutes < 10) {
 
 document.getElementById("timeDay").innerHTML = `${day} @ ${hour}:${minutes}`;
 
-/* In your project, when a user searches for a city 
-(example: New York), it should display the name of the city on 
-the result page and the current temperature of the city. */
 
+// Search engine
 function tempCity(response) {
   let temp = Math.round(response.data.main.temp);
   let tempElement = document.getElementById("temperature");
@@ -74,7 +72,7 @@ function getInfo(response) {
   let temp = Math.round(response.data.main.temp);
   let tempElement = document.getElementById("temperature");
   tempElement.innerHTML = `${temp}°C`;
-  let cityElement = document.getElementById("city");
+  let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.name;
 }
 
@@ -82,7 +80,7 @@ function showLocation(event) {
   event.preventDefault();
 }
 
-let button = document.querySelector("#locationButton");
-button.addEventListener("click", getUserLocation);
+let geolocationBtn = document.getElementById("currentLocation");
+geolocationBtn.addEventListener("click", getUserLocation);
 
 window.onload = getUserLocation;
