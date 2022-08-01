@@ -26,18 +26,32 @@ if (minutes < 10) {
 
 document.getElementById("timeDay").innerHTML = `${day} @ ${hour}:${minutes}`;
 
-
 // Search engine
 function tempCity(response) {
-  let temp = Math.round(response.data.main.temp);
-  let tempElement = document.getElementById("temperature");
-  tempElement.innerHTML = `${temp}°C`;
-  let cityElement = document.querySelector("h1");
-  cityElement.innerHTML = response.data.name;
+   let tempElement = document.getElementById("temperature");
+   let windElement = document.getElementById("windSpeed");
+   let humidityElement = document.getElementById("humidityPercent");
+   let cloudsElement = document.querySelector("#cloud");
+   let cloudIconElement = document.getElementById("weatherIcon");
+   let cityElement = document.querySelector("h1");
+
+   let temp = Math.round(response.data.main.temp);
+   let wind = Math.round(response.data.wind.speed);
+   let humidity = response.data.main.humidity;
+   let clouds = response.data.weather[0].description;
+
+   cityElement.innerHTML = response.data.name;
+   tempElement.innerHTML = `${temp}°C`;
+   humidityElement.innerHTML = `${humidity}%`;
+   windElement.innerHTML = `${wind} km/h`;
+   cloudsElement.innerHTML = `${clouds}`;
+   cloudIconElement.setAttribute(
+     "src",
+     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+   );
 }
 
-function searchCity(event) {
-  console.log("triggered");
+function searchCity(event, err) {
   event.preventDefault();
   let cityElement = document.querySelector("h1");
   let cityInput = document.querySelector("input");
@@ -45,16 +59,39 @@ function searchCity(event) {
   let units = "metric";
   let apiKey = "96e1b7384a3ea207c6c443d025e59895";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(tempCity);
+  axios
+    .get(apiUrl)
+    .then((response) => tempCity(response))
 }
 
 let submitInput = document.getElementById("searchBar");
 submitInput.addEventListener("submit", searchCity);
 
-/*Add a Current Location button. When clicking on it, 
-  it uses the Geolocation API  to get your GPS coordinates 
-  and display and the city and current temperature 
-  using the OpenWeather API. */
+// Current location
+function getInfo(response) {
+  let tempElement = document.getElementById("temperature");
+  let windElement = document.getElementById("windSpeed");
+  let humidityElement = document.getElementById("humidityPercent");
+  let cloudsElement = document.querySelector("#cloud");
+  let cloudIconElement = document.getElementById("weatherIcon");
+  let cityElement = document.querySelector("h1");
+    
+  let temp = Math.round(response.data.main.temp);
+  let wind = Math.round(response.data.wind.speed);
+  let humidity = response.data.main.humidity;
+  let clouds = response.data.weather[0].description;
+    
+  cityElement.innerHTML = response.data.name;
+  tempElement.innerHTML = `${temp}°C`;
+  humidityElement.innerHTML = `${humidity}%`;
+  windElement.innerHTML = `${wind} km/h`;
+  cloudsElement.innerHTML = `${clouds}`;
+  cloudIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  
+  }
 
 function getUserLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -66,14 +103,6 @@ function getUserLocation() {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrl).then(getInfo);
   });
-}
-
-function getInfo(response) {
-  let temp = Math.round(response.data.main.temp);
-  let tempElement = document.getElementById("temperature");
-  tempElement.innerHTML = `${temp}°C`;
-  let cityElement = document.querySelector("h1");
-  cityElement.innerHTML = response.data.name;
 }
 
 function showLocation(event) {
