@@ -21,27 +21,28 @@
   
   <body>
     <div class="wrapper">
+      <div class="information">
 
-    <!-- Search engine -->
-      <form class="search-input" id="searchBar">
-        <a href="" target="_blank" hidden></a>
-        <input type="text" placeholder="Search for a location.." />
-        <button class="icon"><i class="fas fa-search"></i></button>
-      </form>
-      <p class="current-location" id="currentLocation"">
-        <i class="fa-solid fa-map-pin"></i> current location
-      </p>
-      
-    <!--Location and temperature information-->
-    <div class="header-info">
-      <h1></h1>
-      <p id="timeDay"></p>
-      <hr />
-      <div>
+        <!-- Search engine -->
+          <form class="search-input" id="searchBar">
+            <div>
+              <input type="text" placeholder="Search for a location.." />
+              <button class="icon"><i class="fas fa-search"></i></button>
+            </div>
+          </form>
+
+          
+          <!--Location and temperature information-->
+          <div class="header-info">
+            <h1></h1>
+            <a class="current-location" id="currentLocation"">
+              <i class="fa-solid fa-map-pin"></i> show my current location
+            </a>
       <h2>
         <span>now</span>
-        <span id="temperature"></span>
+        <span class="temperature" id="temperature"></span>
       </h2>
+      <div>
         <span> 
           <i class="fa-solid fa-wind"></i> 12km/h 
         </span>
@@ -52,15 +53,70 @@
           <i class="fa-solid fa-cloud"></i> clowdy 
         </span>
       </div>
+      <p id="timeDay"></p>
     </div>
-
   </div>
 
-    <footer>
+    
+    <div class="forecast">
+    <ul>
+      <li>
+        <b>
+          Monday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div> 
+      </li>
+      <li>
+        <b>
+          Tuesday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div>
+      </li>
+      <li>
+        <b>
+          Wednesday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div>
+      </li>
+      <li>
+        <b>
+          Thursday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div>
+      </li>
+      <li>
+        <b>
+          Friday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div>
+      </li>
+      <li>
+        <b>
+          Saturday
+        </b>
+        <div>
+          <i class="fa-solid fa-temperature-full"></i> 20°C
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+  
+  <footer>
     <a href="https://github.com/kristinaannabel/WeatherForecast-Project">
       Open-source code</a>
       by Kristina Annabel
     </footer>
-
+    
     <script src="js/script.js"></script>
   </body>
