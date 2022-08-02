@@ -47,7 +47,6 @@ ul {
   row-gap: 50px;
 }
 
-
 .header-info {
   text-align: center;
   text-transform: uppercase;
@@ -76,7 +75,7 @@ ul {
   border-radius: 5px;
   position: relative;
   box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
-  margin: 50px auto;
+  margin: 110px auto;
   justify-content: center;
 }
 
@@ -103,32 +102,32 @@ ul {
   font-size: 18px;
 }
 
-.search-input.active input {
-  border-radius: 5px 5px 0 0;
-}
-
-.autocom-box li:hover {
-  background: #efefef;
-}
-
 .current-location {
   transition: all 350ms ease-in-out;
   font-size: 15px;
-  color: gray;
 }
 
 .current-location:hover {
   cursor: pointer;
-  color: black;
+  color: #686252;
 }
 
 .temperature {
   color: #686252;
 }
 
+.converter {
+  transition: all 350ms ease-in-out;
+}
+
+.converter:hover {
+  color: #686252;
+  cursor: pointer;
+}
+
 .wind-humidity {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   gap: 40px;
   justify-content: center;
 }
