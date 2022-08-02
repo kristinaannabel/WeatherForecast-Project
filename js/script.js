@@ -74,7 +74,14 @@ function searchCity(event) {
   event.preventDefault();
   cityElement.innerHTML = cityInput.value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then((response) => getInfo(response));
+  axios
+    .get(apiUrl)
+    .then((response) => {
+      getInfo(response);
+    })
+    .catch((e) => {
+      cityElement.innerHTML = e.response.data.message;
+    });
 }
 
 function getUserLocation() {
